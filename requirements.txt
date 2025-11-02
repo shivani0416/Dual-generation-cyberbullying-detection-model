@@ -1,0 +1,8 @@
+flask
+flask-cors
+joblib
+sentence-transformers
+scikit-learn
+xgboost
+emoji
+numpy

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cyberbullying Detection – Dual Gen-Z & Millennial Mode</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background: linear-gradient(135deg, #f9fafb 0%, #e0f2fe 100%);
+      font-family: "Poppins", sans-serif;
+    }
+    .glass {
+      backdrop-filter: blur(12px);
+      background: rgba(255, 255, 255, 0.8);
+    }
+    .offensive { color: #dc2626; font-weight: 600; }
+    .safe { color: #16a34a; font-weight: 600; }
+  </style>
+</head>
+
+<body class="min-h-screen flex flex-col items-center justify-center p-6">
+  <div class="max-w-3xl w-full glass rounded-3xl shadow-lg p-8">
+    <h1 class="text-3xl font-bold text-center text-blue-900 mb-6">
+      🧠 Cyberbullying Detection Model
+    </h1>
+
+    <!-- MODE SELECTION -->
+    <div class="flex justify-center gap-6 mb-6">
+      <label class="flex items-center gap-2 cursor-pointer">
+        <input type="radio" name="mode" value="genz" checked class="accent-blue-600">
+        <span class="font-medium text-gray-800">Gen-Z Mode</span>
+      </label>
+      <label class="flex items-center gap-2 cursor-pointer">
+        <input type="radio" name="mode" value="millennials" class="accent-pink-500">
+        <span class="font-medium text-gray-800">Millennial Mode</span>
+      </label>
+    </div>
+
+    <!-- INPUT AREA -->
+    <textarea id="userInput" placeholder="Type or paste a comment here..."
+      class="w-full p-4 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-400 outline-none mb-4 h-28 resize-none"></textarea>
+
+    <!-- PREDICT BUTTON -->
+    <div class="flex justify-center">
+      <button id="predictBtn"
+        class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-xl transition-all">
+        Predict
+      </button>
+    </div>
+
+    <!-- OUTPUT AREA -->
+    <div id="resultCard" class="hidden mt-6 text-center border-t pt-6">
+      <h2 class="text-xl font-semibold mb-2">Prediction Result 💬</h2>
+      <p id="predLabel" class="text-lg"></p>
+      <p id="predConf" class="text-gray-600"></p>
+    </div>
+  </div>
+
+  <!-- TEST LOG TABLE -->
+  <section id="test-logger" class="mt-10 w-full max-w-4xl bg-white shadow-lg rounded-3xl p-6 glass">
+    <h3 class="text-lg font-semibold mb-3 text-blue-900">📜 Model Testing Log</h3>
+    <div class="overflow-x-auto">
+      <table id="resultTable" class="w-full text-sm border-collapse">
+        <thead>
+          <tr class="bg-blue-100 text-left text-blue-900">
+            <th class="p-2">#</th>
+            <th class="p-2">Mode</th>
+            <th class="p-2">Input</th>
+            <th class="p-2">Label</th>
+            <th class="p-2">Confidence</th>
+          </tr>
+        </thead>
+        <tbody id="resultBody"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- LINKED JS -->
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
